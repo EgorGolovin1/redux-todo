@@ -6,7 +6,7 @@
     opacity: 0.7;
     border-radius: 2px 2px 20px 20px;
     font-size: 14px;
-    padding: 5px 15px;
+    padding: 15px 15px 20px 15px;
     overflow: hidden;
     margin-bottom: 20px;
     text-align: center;
@@ -52,6 +52,11 @@
     border-bottom: 2px solid #286562;
     color: #286562;
 }
+.todo-filter .btn.delete:hover {
+    border-bottom: 2px solid #e7544d;
+    color: #e7544d;
+}
+
 .todo-filter .btn.tabbed {
     border-bottom: 2px solid #efa501;
     color: #efa501;

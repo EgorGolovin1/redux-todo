@@ -1,4 +1,4 @@
-import {ADD_TASK,REMOVE_TASK, COMPLETE_TASK, CHANGE_FILTER, CHANGE_DESCRIPTION} from '../../constans';
+import {ADD_TASK,REMOVE_TASK, COMPLETE_TASK, CHANGE_FILTER, CHANGE_DESCRIPTION, CLEAR_ALL} from '../../constans';
 
 export const addTask = (id, text, isCompleted) => ({
     type: ADD_TASK,
@@ -7,9 +7,9 @@ export const addTask = (id, text, isCompleted) => ({
     isCompleted,
 });
 
-export const removeTask = id => ({
+export const removeTask = (id) => ({
     type: REMOVE_TASK,
-    id
+    id,
 })
 
 export const completeTask = id => ({
@@ -26,4 +26,8 @@ export const change = (id, text)=> ({
     type: CHANGE_DESCRIPTION,
     id,
     text,
+})
+
+export const clearAll = () => ({
+    type: CLEAR_ALL
 })

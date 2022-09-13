@@ -168,3 +168,8 @@
     position: absolute;
     transform: rotate(135deg);
 }
+
+#sos{
+    background-color: black;
+}
+    
