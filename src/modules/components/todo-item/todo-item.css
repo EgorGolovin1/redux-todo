@@ -2,7 +2,7 @@
     display: flex;
     position: relative;
     width: 430px;
-    height: fit-content;
+    height: auto;
     background-color: #ffff00;
     padding: 12px 50px 12px 12px;
     border-radius: 30px;
@@ -15,18 +15,25 @@
 }
 @media (min-width: 0px) and (max-width: 988px) {
     .todo-item {
-        width: 320px;
+        width: 250px;
         height: fit-content;
         margin-top: 15px;
         padding: 10px 80px 10px 20px;
     }
 }
 .todo-item-description {
+    background: rgba(0, 0, 0, 0);
+    border: none;
     font-weight: 700;
     font-size: 16px;
     line-height: 1.7;
     width: inherit;
     height: fit-content;
+    padding: 0px;
+    word-break: break-all;
+    word-wrap: break-word;
+    resize : none;
+    text-overflow: ellipsis;
 }
 @media (min-width: 0px) and (max-width: 988px) {
     .tasks-item-description {
@@ -87,8 +94,8 @@
 }
 @media (min-width: 0px) and (max-width: 988px) {
     .tasks-btn-delete::before {
-        border-right: 20px solid #ce2525;
-        width: 20px;
+        border-right: 27px solid #ce2525;
+        width: 14px;
     }
 }
 .tasks-btn-delete::after {
@@ -101,7 +108,7 @@
 @media (min-width: 0px) and (max-width: 988px) {
     .tasks-btn-delete::after {
         border-right: 20px solid #ce2525;
-        width: 20px;
+        width: 6px;
     }
 }
 .tasks-btn-delete:hover::after {
@@ -133,6 +140,7 @@
         height: 20px;
         width: 20px;
         padding: 5px;
+        margin-top: 7px;
     }
 }
 .tasks-btn-complete:focus-visible {
@@ -150,15 +158,6 @@
     position: absolute;
     transform: rotate(135deg);
 }
-@media (min-width: 0px) and (max-width: 988px) {
-    .tasks-btn-complete:checked::before {
-        width: 12.24px;
-        height: 7.12px;
-    }
-}
-.tasks-btn-complete:hover {
-    transition: 0.5s;
-}
 .tasks-btn-complete:hover::before {
     content: "";
     border-top: 2px solid #ffffff;
@@ -168,6 +167,17 @@
     position: absolute;
     transform: rotate(135deg);
 }
+
+@media (min-width: 0px) and (max-width: 988px) {
+    .tasks-btn-complete:checked::before, .tasks-btn-complete:hover::before {
+        width: 8.24px;
+        height: 4.12px;
+    }
+}
+.tasks-btn-complete:hover {
+    transition: 0.5s;
+}
+
 
 #sos{
     background-color: black;

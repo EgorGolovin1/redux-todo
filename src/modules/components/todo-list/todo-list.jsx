@@ -9,19 +9,24 @@ const ToDoList = ({
   removeTask,
   completeTask,
   handleDescriptionChange,
+  addEdeting,
   onKeyPress,
+  onChange,
 }) => (
   <ul className="todo-list">
-    {tasksList.map(({ id, text, isCompleted}) => (
+    {tasksList.map(({ id, text, isCompleted, isEditing}) => (
       <ToDoItem
-        onKeyPress={onKeyPress}
         handleDescriptionChange={handleDescriptionChange}
         completeTask={completeTask}
         removeTask={removeTask}
         id={id}
         key={id}
         text={text}
+        addEdeting = {addEdeting}
+        isEditing = {isEditing}
         isCompleted={isCompleted}
+        onKeyPress = {onKeyPress}
+        onChange = {onChange}
       />
     ))}
   </ul>

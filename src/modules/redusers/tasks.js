@@ -4,6 +4,7 @@ import {
   COMPLETE_TASK,
   CHANGE_DESCRIPTION,
   CLEAR_ALL,
+  CONFIG_CHANGES,
 } from "../../constans";
 import { load } from "redux-localstorage-simple";
 
@@ -17,7 +18,7 @@ if (!TASKS || !TASKS.tasks || !TASKS.tasks.length) {
 
 const tasks = (
   state = TASKS.tasks,
-  { id, text, isCompleted, type }
+  { id, text, isCompleted,isEditing, type }
 ) => {
   switch (type) {
     case ADD_TASK:
@@ -27,6 +28,7 @@ const tasks = (
           id,
           text,
           isCompleted,
+          isEditing
         },
       ];
     case REMOVE_TASK:
@@ -41,7 +43,15 @@ const tasks = (
     case CHANGE_DESCRIPTION:
       return [...state].map((task) => {
         if (task.id === id) {
+          task.isEditing = !task.isEditing;
+        }
+        return task;
+      });
+    case CONFIG_CHANGES:
+      return [...state].map((task) => {
+        if (task.id === id) {
           task.text = text;
+          task.isEditing = false;
         }
         return task;
       });

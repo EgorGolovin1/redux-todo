@@ -14,3 +14,10 @@
     margin: 0 auto;
   }
   
+  @media (min-width: 0px) and (max-width: 988px) {
+    .title {
+      width: 300px;
+      font-size: 80px;
+      font-weight: 700;
+    }
+}

@@ -6,8 +6,9 @@ import {
   removeTask,
   completeTask,
   changeFilter,
-  change,
+  addEdeting,
   clearAll,
+  configEdeting,
 } from "../../actions/actionCreator";
 
 import TodoInput from "../../components/todo-input/todo-input";
@@ -29,18 +30,21 @@ class ToDo extends Component {
     });
   };
 
-  handleDescriptionChange = (e) => {
+  handleDescriptionChange = ({ target: { value }}) => {
     this.setState({
-      actualtext: e.target.innerHTML,
-    });
+        actualtext: value
+    })
+    
+    
   };
 
-  change = (id, key, item) => {
+  configEdeting = (id, key, item) => {
     let { actualtext } = this.state;
+    let scroll_height = item.scrollHeight;
+    item.style.height = scroll_height +'px';
     if (actualtext.length > 3 && key === "Enter") {
-      let { change } = this.props;
-      change(id, actualtext);
-      item.blur();
+      let { configEdeting } = this.props;
+      configEdeting(id, actualtext);
     }
   };
 
@@ -74,8 +78,8 @@ class ToDo extends Component {
     tasks.filter((task) => !task.isCompleted).length;
 
   render() {
-    const { description, actualtext } = this.state;
-    const { tasks, removeTask, completeTask, filters, changeFilter, clearAll } =
+    const { description} = this.state;
+    const { tasks, removeTask, completeTask, filters, changeFilter, clearAll,addEdeting } =
       this.props;
     const isTasksExsist = tasks && tasks.length > 0;
     const filteredTasks = this.filterTasks(tasks, filters);
@@ -89,9 +93,9 @@ class ToDo extends Component {
         />
         {isTasksExsist && (
           <TodoList
-            actualtext={actualtext}
-            onKeyPress={this.change}
-            handleDescriptionChange={this.handleDescriptionChange}
+            addEdeting = {addEdeting}
+            onKeyPress = {this.configEdeting}
+            onChange = {this.handleDescriptionChange}
             completeTask={completeTask}
             tasksList={filteredTasks}
             removeTask={removeTask}
@@ -115,5 +119,5 @@ export default connect(
     tasks,
     filters,
   }),
-  { addTask, removeTask, completeTask, changeFilter, change, clearAll }
+  { addTask, removeTask, completeTask, changeFilter, addEdeting,configEdeting, clearAll }
 )(ToDo);

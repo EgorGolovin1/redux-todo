@@ -1,10 +1,11 @@
-import {ADD_TASK,REMOVE_TASK, COMPLETE_TASK, CHANGE_FILTER, CHANGE_DESCRIPTION, CLEAR_ALL} from '../../constans';
+import {ADD_TASK,REMOVE_TASK, COMPLETE_TASK, CHANGE_FILTER, CHANGE_DESCRIPTION, CLEAR_ALL, CONFIG_CHANGES} from '../../constans';
 
-export const addTask = (id, text, isCompleted) => ({
+export const addTask = (id, text, isCompleted, isEditing) => ({
     type: ADD_TASK,
     id,
     text,
     isCompleted,
+    isEditing
 });
 
 export const removeTask = (id) => ({
@@ -22,10 +23,15 @@ export const changeFilter = activeFilter => ({
     activeFilter
 })
 
-export const change = (id, text)=> ({
+export const addEdeting = (id)=> ({
     type: CHANGE_DESCRIPTION,
     id,
-    text,
+})
+
+export const configEdeting = (id,text) => ({
+    type: CONFIG_CHANGES,
+    id,
+    text
 })
 
 export const clearAll = () => ({

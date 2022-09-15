@@ -3,26 +3,26 @@ import PropTypes from "prop-types";
 
 import "./todo-item.css";
 const ToDoItem = ({
+  id,
   text,
   isCompleted,
   removeTask,
   completeTask,
-  id,
-  handleDescriptionChange,
+  isEditing,
+  addEdeting,
   onKeyPress,
+  onChange
 }) => (
   <li
+    onDoubleClick={() => addEdeting(id)}
     className={isCompleted ? "todo-item checked" : "todo-item"}
   >
-    <div
-      onKeyUp={(e) => handleDescriptionChange(e)}
-      onKeyPress={(e) => onKeyPress(id, e.key, e.target)}
-      contentEditable="true"
+    {isEditing? <input type = "textarea" className="todo-item-description input" onKeyPress = {(e) => onKeyPress(id,e.key,e.target)} onChange={onChange}  defaultValue = {text}></input> :
+     <div
       className="todo-item-description"
-      suppressContentEditableWarning="true"
     >
       {text}
-    </div>
+    </div>}
     <input
       type="checkbox"
       checked={isCompleted}
@@ -41,18 +41,22 @@ const ToDoItem = ({
 ToDoItem.propTypes = {
   text: PropTypes.string,
   isCompleted: PropTypes.bool,
+  isEditing: PropTypes.bool,
   removeTask: PropTypes.func,
   id: PropTypes.number,
   onKeyPress: PropTypes.func,
   handleDescriptionChange: PropTypes.func,
+  addEdeting: PropTypes.func,
 };
 
 ToDoItem.defaultProp = {
   text: "",
   isCompleted: false,
+  isEditing: false,
   removeTask: () => {},
   id: 0,
   onKeyPress: () => {},
   handleDescriptionChange: () => {},
+  addEdeting: () => {},
 };
 export default ToDoItem;
